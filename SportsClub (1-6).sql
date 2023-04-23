@@ -1,10 +1,10 @@
-USE master;
+ï»¿USE master;
 DROP DATABASE IF EXISTS SportsClub;
 
 CREATE DATABASE SportsClub;
 USE SportsClub;
 
---Òàáëèöû óçëîâ
+--Ð¢Ð°Ð±Ð»Ð¸Ñ†Ñ‹ ÑƒÐ·Ð»Ð¾Ð²
 CREATE TABLE Person
 (
 id INT NOT NULL PRIMARY KEY,
@@ -25,7 +25,7 @@ name NVARCHAR(30) NOT NULL,
 city NVARCHAR(30) NOT NULL
 ) AS NODE;
 
---Òàáëèöû ð¸áåð
+--Ð¢Ð°Ð±Ð»Ð¸Ñ†Ñ‹ Ñ€Ñ‘Ð±ÐµÑ€
 CREATE TABLE FamiliarWith AS EDGE;
 
 CREATE TABLE LivesIn  AS EDGE;
@@ -34,7 +34,7 @@ CREATE TABLE MemberOf  AS EDGE;
 
 CREATE TABLE LocatedIn  AS EDGE;
 
---Äîáàâèì îãðàíè÷åíèÿ
+--Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ñ
 ALTER TABLE FamiliarWith
 ADD CONSTRAINT EC_FamiliarWith CONNECTION (Person TO Person);
 
@@ -48,44 +48,44 @@ ALTER TABLE LocatedIn
 ADD CONSTRAINT EC_LocatedIn CONNECTION (Club TO City);
 GO
 
---Çàïîëíåíèå òàáëèö óçëîâ
+--Ð—Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ñ‚Ð°Ð±Ð»Ð¸Ñ† ÑƒÐ·Ð»Ð¾Ð²
 INSERT INTO Person (id, name)
-VALUES (1, N'Àëåêñàíäðà'),
-	   (2, N'Äàíèèë'),
-	   (3, N'Åêàòåðèíà'),
-       (4, N'Ãëåá'),
-       (5, N'Èðèíà'),
-       (6, N'Êîíñòàíòèí'),
-       (7, N'Ëþäìèëà'),
-       (8, N'Ìèõàèë'),
-       (9, N'Íàòàëüÿ'),
-       (10, N'Îëåã');
+VALUES (1, N'ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€Ð°'),
+	   (2, N'Ð”Ð°Ð½Ð¸Ð¸Ð»'),
+	   (3, N'Ð•ÐºÐ°Ñ‚ÐµÑ€Ð¸Ð½Ð°'),
+       (4, N'Ð“Ð»ÐµÐ±'),
+       (5, N'Ð˜Ñ€Ð¸Ð½Ð°'),
+       (6, N'ÐšÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ð¸Ð½'),
+       (7, N'Ð›ÑŽÐ´Ð¼Ð¸Ð»Ð°'),
+       (8, N'ÐœÐ¸Ñ…Ð°Ð¸Ð»'),
+       (9, N'ÐÐ°Ñ‚Ð°Ð»ÑŒÑ'),
+       (10, N'ÐžÐ»ÐµÐ³');
 
 INSERT INTO City (id, name, region)
-VALUES (1, N'Ìèíñê', N'Ìèíñêàÿ îáëàñòü'),
-       (2, N'Ãðîäíî', N'Ãðîäíåíñêàÿ îáëàñòü'),
-       (3, N'Áðåñò', N'Áðåñòñêàÿ îáëàñòü'),
-       (4, N'Ïîëîöê', N'Âèòåáñêàÿ îáëàñòü'),
-       (5, N'Ãîìåëü', N'Ãîìåëüñêàÿ îáëàñòü'),
-       (6, N'Ìîãèë¸â', N'Ìîãèë¸âñêàÿ îáëàñòü'),
-       (7, N'Áåðåçèíî', N'Ìèíñêàÿ îáëàñòü'),
-       (8, N'Ëèäà', N'Ãðîäíåíñêàÿ îáëàñòü'),
-       (9, N'Ñîëèãîðñê', N'Ìèíñêàÿ îáëàñòü'),
-       (10, N'Ñëóöê', N'Ìèíñêàÿ îáëàñòü');
+VALUES (1, N'ÐœÐ¸Ð½ÑÐº', N'ÐœÐ¸Ð½ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (2, N'Ð“Ñ€Ð¾Ð´Ð½Ð¾', N'Ð“Ñ€Ð¾Ð´Ð½ÐµÐ½ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (3, N'Ð‘Ñ€ÐµÑÑ‚', N'Ð‘Ñ€ÐµÑÑ‚ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (4, N'ÐŸÐ¾Ð»Ð¾Ñ†Ðº', N'Ð’Ð¸Ñ‚ÐµÐ±ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (5, N'Ð“Ð¾Ð¼ÐµÐ»ÑŒ', N'Ð“Ð¾Ð¼ÐµÐ»ÑŒÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (6, N'ÐœÐ¾Ð³Ð¸Ð»Ñ‘Ð²', N'ÐœÐ¾Ð³Ð¸Ð»Ñ‘Ð²ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (7, N'Ð‘ÐµÑ€ÐµÐ·Ð¸Ð½Ð¾', N'ÐœÐ¸Ð½ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (8, N'Ð›Ð¸Ð´Ð°', N'Ð“Ñ€Ð¾Ð´Ð½ÐµÐ½ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (9, N'Ð¡Ð¾Ð»Ð¸Ð³Ð¾Ñ€ÑÐº', N'ÐœÐ¸Ð½ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ'),
+       (10, N'Ð¡Ð»ÑƒÑ†Ðº', N'ÐœÐ¸Ð½ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ');
 
 INSERT INTO Club (id, name, city)
-VALUES (1, N'Ñëó÷', N'Ñëóöê'),
-       (2, N'Ñîæ', N'Ãîìåëü'),
-       (3, N'Ýðèäàí', N'Ïîëîöê'),
-       (4, N'Øàõò¸ð', N'Ñîëèãîðñê'),
-       (5, N'ÊÎ Áåðåçèíî', N'Áåðåçèíî'),
-       (6, N'ÊÎ Ëèäà', N'Ëèäà'),
-       (7, N'Êðîíàí', N'Ãðîäíî'),
-       (8, N'Òîðïåäî', N'Ìîãèë¸â'),
-       (9, N'Êàìâîëü', N'Ìèíñê'),
-       (10, N'Áåðåñòüå', N'Áðåñò');
+VALUES (1, N'Ð¡Ð»ÑƒÑ‡', N'Ð¡Ð»ÑƒÑ†Ðº'),
+       (2, N'Ð¡Ð¾Ð¶', N'Ð“Ð¾Ð¼ÐµÐ»ÑŒ'),
+       (3, N'Ð­Ñ€Ð¸Ð´Ð°Ð½', N'ÐŸÐ¾Ð»Ð¾Ñ†Ðº'),
+       (4, N'Ð¨Ð°Ñ…Ñ‚Ñ‘Ñ€', N'Ð¡Ð¾Ð»Ð¸Ð³Ð¾Ñ€ÑÐº'),
+       (5, N'ÐšÐž Ð‘ÐµÑ€ÐµÐ·Ð¸Ð½Ð¾', N'Ð‘ÐµÑ€ÐµÐ·Ð¸Ð½Ð¾'),
+       (6, N'ÐšÐž Ð›Ð¸Ð´Ð°', N'Ð›Ð¸Ð´Ð°'),
+       (7, N'ÐšÑ€Ð¾Ð½Ð°Ð½', N'Ð“Ñ€Ð¾Ð´Ð½Ð¾'),
+       (8, N'Ð¢Ð¾Ñ€Ð¿ÐµÐ´Ð¾', N'ÐœÐ¾Ð³Ð¸Ð»Ñ‘Ð²'),
+       (9, N'ÐšÐ°Ð¼Ð²Ð¾Ð»ÑŒ', N'ÐœÐ¸Ð½ÑÐº'),
+       (10, N'Ð‘ÐµÑ€ÐµÑÑ‚ÑŒÐµ', N'Ð‘Ñ€ÐµÑÑ‚');
 
---Çàïîëíåíèå òàáëèö ð¸áåð
+--Ð—Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ñ‚Ð°Ð±Ð»Ð¸Ñ† Ñ€Ñ‘Ð±ÐµÑ€
 INSERT INTO FamiliarWith ($from_id, $to_id)
 VALUES  ((SELECT $node_id FROM Person WHERE id = 1),
 		 (SELECT $node_id FROM Person WHERE id = 2)),
@@ -183,17 +183,17 @@ VALUES ((SELECT $node_id FROM Club WHERE ID = 1),
 		 (SELECT $node_id FROM City WHERE ID = 3));
 GO
 
---Çàïðîñû ñ Match
+--Ð—Ð°Ð¿Ñ€Ð¾ÑÑ‹ Ñ Match
 
---Óçíàåì, ñ êåì çíàêîì Îëåã
+--Ð£Ð·Ð½Ð°ÐµÐ¼, Ñ ÐºÐµÐ¼ Ð·Ð½Ð°ÐºÐ¾Ð¼ ÐžÐ»ÐµÐ³
 SELECT person2.name AS person
 FROM Person AS person1
 	 , FamiliarWith
 	 , Person AS person2
 WHERE MATCH(person1-(FamiliarWith)->person2)
-			AND person1.name = N'Îëåã';
+			AND person1.name = N'ÐžÐ»ÐµÐ³';
 
---Óçíàåì, â êàêèõ ñïîðòèâíûõ êëóáàõ ñîñòîÿò çíàêîìûå Àëåêñàíäðû
+--Ð£Ð·Ð½Ð°ÐµÐ¼, Ð² ÐºÐ°ÐºÐ¸Ñ… ÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ð²Ð½Ñ‹Ñ… ÐºÐ»ÑƒÐ±Ð°Ñ… ÑÐ¾ÑÑ‚Ð¾ÑÑ‚ Ð·Ð½Ð°ÐºÐ¾Ð¼Ñ‹Ðµ ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€Ñ‹
 SELECT person2.name AS person, Club.name AS club
 FROM Person AS person1
 	 , FamiliarWith
@@ -201,9 +201,9 @@ FROM Person AS person1
 	 , MemberOf
 	 , Club
 WHERE MATCH(person1-(FamiliarWith)->person2-(MemberOf)->Club)
-			AND person1.name = N'Àëåêñàíäðà';
+			AND person1.name = N'ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€Ð°';
 
- --Óçíàåì, â êàêèõ ãîðîäàõ æèâóò çíàêîìûå Äàíèèëà
+ --Ð£Ð·Ð½Ð°ÐµÐ¼, Ð² ÐºÐ°ÐºÐ¸Ñ… Ð³Ð¾Ñ€Ð¾Ð´Ð°Ñ… Ð¶Ð¸Ð²ÑƒÑ‚ Ð·Ð½Ð°ÐºÐ¾Ð¼Ñ‹Ðµ Ð”Ð°Ð½Ð¸Ð¸Ð»Ð°
 SELECT person2.name AS person, City.name AS city
 FROM Person AS person1
 	 , FamiliarWith
@@ -211,9 +211,9 @@ FROM Person AS person1
 	 , LivesIn
 	 , City
 WHERE MATCH(person1-(FamiliarWith)->person2-(LivesIn)->City)
-	        AND person1.name = N'Åêàòåðèíà';
+	        AND person1.name = N'Ð•ÐºÐ°Ñ‚ÐµÑ€Ð¸Ð½Ð°';
 
---Óçíàåì, â êàêèõ ãîðîäàõ ðàñïîëîæåíû ñïîðòèâíûå êëóáû, â êîòîðûõ ñîñòîÿò çíàêîìûå Îëåãà
+--Ð£Ð·Ð½Ð°ÐµÐ¼, Ð² ÐºÐ°ÐºÐ¸Ñ… Ð³Ð¾Ñ€Ð¾Ð´Ð°Ñ… Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ñ‹ ÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ð²Ð½Ñ‹Ðµ ÐºÐ»ÑƒÐ±Ñ‹, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… ÑÐ¾ÑÑ‚Ð¾ÑÑ‚ Ð·Ð½Ð°ÐºÐ¾Ð¼Ñ‹Ðµ ÐžÐ»ÐµÐ³Ð°
 SELECT person2.name AS person, Club.name AS club, City.name AS city
 FROM Person AS person1
 	 , FamiliarWith
@@ -223,9 +223,9 @@ FROM Person AS person1
      , LocatedIn
      , City
 WHERE MATCH(person1-(FamiliarWith)->person2-(MemberOf)->Club-(LocatedIn)->City)
-			AND person1.name = N'Îëåã';
+			AND person1.name = N'ÐžÐ»ÐµÐ³';
 
---Óçíàåì, êòî æèâ¸ò â ãîðîäàõ, â êîòîðûõ ðàñïîëîæåí ñïîðòèâíûé êëóá "Ñîæ"
+--Ð£Ð·Ð½Ð°ÐµÐ¼, ÐºÑ‚Ð¾ Ð¶Ð¸Ð²Ñ‘Ñ‚ Ð² Ð³Ð¾Ñ€Ð¾Ð´Ð°Ñ…, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð¶ÐµÐ½ ÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ð²Ð½Ñ‹Ð¹ ÐºÐ»ÑƒÐ± "Ð¡Ð¾Ð¶"
 SELECT Club.name AS club, City.name AS city, person.name AS person 
 FROM Club
 	 , LocatedIn
@@ -233,12 +233,12 @@ FROM Club
 	 , LivesIn
 	 , Person
 WHERE MATCH(Club-(LocatedIn)->City<-(LivesIn)-Person)
-			AND Club.name = N'Ñîæ';
+			AND Club.name = N'Ð¡Ð¾Ð¶';
 
 
---Çàïðîñû ñ SHORTEST_PATH
+--Ð—Ð°Ð¿Ñ€Ð¾ÑÑ‹ Ñ SHORTEST_PATH
 
---Ñ êåì ìîæåò ïîçíàêîìèòüñÿ Ãëåá (id = 4)
+--Ð¡ ÐºÐµÐ¼ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼Ð¸Ñ‚ÑŒÑÑ Ð“Ð»ÐµÐ± (id = 4)
 SELECT Person1.name AS PersonName
 	  , STRING_AGG(Person2.name, '->') WITHIN GROUP (GRAPH PATH) AS Friends
 FROM Person AS Person1
@@ -247,7 +247,7 @@ FROM Person AS Person1
 WHERE MATCH(SHORTEST_PATH(Person1(-(fo)->Person2)+))
             AND Person1.id = 4;
 
---Ñ êåì ìîæåò ïîçíàêîìèòüñÿ Ãëåá (id = 4) çà 3 øàãà
+--Ð¡ ÐºÐµÐ¼ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼Ð¸Ñ‚ÑŒÑÑ Ð“Ð»ÐµÐ± (id = 4) Ð·Ð° 3 ÑˆÐ°Ð³Ð°
 SELECT Person1.name AS PersonName
 	  , STRING_AGG(Person2.name, '->') WITHIN GROUP (GRAPH PATH) AS Friends
 FROM Person AS Person1
